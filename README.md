@@ -3,6 +3,8 @@ MVP Architecture Framework
 
 MVP 架构的框架封装.能够完整地感受生命周期,可以自动释放View的视图绑定,防止内存泄漏。
 
+[Android Studio插件辅助创建MVP代码](https://github.com/fengxiaocan/BaseMvpHelper/blob/master/BaseMvpHelper.jar)。用方法为:鼠标右键包路径处,选择New Kotlin Mvp或New Java Mvp,输入名称即可创建。
+
 需要在Base Activity跟Base Fragment中实现MvpProvider.BaseMvpOwner,提供MvpStore。
 然后使用MvpProvider获取Presenter的实例来操作方法，内部自动处理生命周期。
     
