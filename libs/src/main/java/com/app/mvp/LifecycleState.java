@@ -5,7 +5,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 
-class LifecycleState implements LifecycleEventObserver {
+public class LifecycleState implements LifecycleEventObserver,LifecycleData {
     private Lifecycle.Event state = null;
 
     @Override
@@ -53,7 +53,12 @@ class LifecycleState implements LifecycleEventObserver {
         return state != null && state.compareTo(event) >= 0;
     }
 
-    void destroy() {
+    protected final void destroy(){
         state = Lifecycle.Event.ON_DESTROY;
+    }
+
+    @Override
+    public void onDetach() {
+        destroy();
     }
 }

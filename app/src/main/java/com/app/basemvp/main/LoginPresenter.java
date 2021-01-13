@@ -41,14 +41,14 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginMvp.LoginView
     }
 
     @Override
-    public void attachView(LoginMvp.LoginView view) {
-        super.attachView(view);
+    public void onAttach(LoginMvp.LoginView view) {
+        super.onAttach(view);
         Log.e("noah","attachView");
     }
 
     @Override
-    public void detachView() {
-        super.detachView();
+    public void onDetach() {
+        super.onDetach();
         Log.e("noah","detachView");
     }
 

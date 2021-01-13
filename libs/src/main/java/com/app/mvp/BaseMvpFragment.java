@@ -1,8 +1,8 @@
 package com.app.mvp;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-public class BaseMvpActivity extends AppCompatActivity implements LifeDataProvider.BaseLifeDataOwner {
+public class BaseMvpFragment extends Fragment implements LifeDataProvider.BaseLifeDataOwner {
     private LifeDataStore mvpStore;
     private LifeDataProvider provider;
 

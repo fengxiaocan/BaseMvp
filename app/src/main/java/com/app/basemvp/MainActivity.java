@@ -15,7 +15,7 @@ public class MainActivity extends BaseMvpActivity implements LoginMvp.LoginView 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        provider().get(LoginPresenter.class).attachView(this);
+        provider().get(LoginPresenter.class).onAttach(this);
     }
 
     private String getUserName() {

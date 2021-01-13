@@ -34,17 +34,17 @@ public abstract class BasePresenter<M extends IBaseModel, V> extends LifecycleSt
         super.onStateChanged(source, event);
         getModel().onStateChanged(source, event);
         if (isDestroy()) {
-            detachView();
+            onDetach();
         }
     }
 
     @Override
-    public void attachView(V view) {
+    public void onAttach(V view) {
         baseView = new WeakReference<V>(view);
     }
 
     @Override
-    public void detachView() {
+    public void onDetach() {
         if (baseView != null) {
             baseView.clear();
             baseView = null;
@@ -66,9 +66,9 @@ public abstract class BasePresenter<M extends IBaseModel, V> extends LifecycleSt
     }
 
     protected final M defaultCreateModel() {
-        Type genericSuperclass = getClass().getGenericSuperclass();
-        Class<M> type = (Class<M>) ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
         try {
+            Type genericSuperclass = getClass().getGenericSuperclass();
+            Class<M> type = (Class<M>) ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
             return type.newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
