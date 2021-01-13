@@ -20,10 +20,12 @@ public class MvpStore {
     }
 
     Set<String> keys() {
-        return new HashSet<>(mMap.keySet());
+        return mMap.keySet();
     }
 
     public final void clear() {
         mMap.clear();
     }
+
+
 }
