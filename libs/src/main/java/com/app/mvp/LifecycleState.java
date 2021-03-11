@@ -10,7 +10,13 @@ public class LifecycleState implements LifecycleEventObserver,LifecycleData {
 
     @Override
     public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
-        state = event;
+        if (state != event) {
+            //防止二次回调
+            state = event;
+            if (isDestroy()) {
+                onDetach();
+            }
+        }
     }
 
     /**

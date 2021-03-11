@@ -10,7 +10,7 @@ public interface LoginMvp {
     }
 
     interface LoginModel extends IBaseModel {
-        void login(String userName, String password, Observer<String> observer);
+        void login(String userName, String password, Observer<String> success, Observer<Throwable> error);
     }
 
     interface LoginView {

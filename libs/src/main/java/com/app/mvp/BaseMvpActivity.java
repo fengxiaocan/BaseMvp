@@ -1,5 +1,6 @@
 package com.app.mvp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BaseMvpActivity extends AppCompatActivity implements LifeDataProvider.BaseLifeDataOwner {
@@ -15,4 +16,11 @@ public class BaseMvpActivity extends AppCompatActivity implements LifeDataProvid
         return provider == null ? provider = LifeDataProvider.of(this) : provider;
     }
 
+    public <T extends LifecycleData> T getProvider(@NonNull Class<T> modelClass) {
+        return provider().get(modelClass);
+    }
+
+    public <T extends LifecycleData> T getProvider(@NonNull String key, @NonNull Class<T> modelClass) {
+        return provider().get(key, modelClass);
+    }
 }

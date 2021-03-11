@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -33,9 +31,6 @@ public abstract class BasePresenter<M extends IBaseModel, V> extends LifecycleSt
     public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
         super.onStateChanged(source, event);
         getModel().onStateChanged(source, event);
-        if (isDestroy()) {
-            onDetach();
-        }
     }
 
     @Override
@@ -45,11 +40,11 @@ public abstract class BasePresenter<M extends IBaseModel, V> extends LifecycleSt
 
     @Override
     public void onDetach() {
+        super.onDetach();
         if (baseView != null) {
             baseView.clear();
             baseView = null;
         }
-        destroy();
         getModel().onDetach();
     }
 

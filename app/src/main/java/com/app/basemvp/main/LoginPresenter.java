@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.app.mvp.BasePresenter;
-import com.app.mvp.Observer;
 
 public class LoginPresenter extends BasePresenter<LoginModel, LoginMvp.LoginView> implements LoginMvp.LoginPresenter {
 
@@ -17,19 +16,13 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginMvp.LoginView
             if (isViewAttached()) {
                 getView().waiting();
             }
-            getModel().login(userName, password, new Observer<String>() {
-                @Override
-                public void setValue(String data) {
-                    if (isViewAttached()) {
-                        getView().loginSuccess(data);
-                    }
+            getModel().login(userName, password, success -> {
+                if (isViewAttached()) {
+                    getView().loginSuccess(success);
                 }
-
-                @Override
-                public void onError(Throwable error) {
-                    if (isViewAttached()) {
-                        getView().loginFailure(error.getMessage());
-                    }
+            }, error -> {
+                if (isViewAttached()) {
+                    getView().loginFailure(error.getMessage());
                 }
             });
         }
@@ -49,7 +42,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginMvp.LoginView
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.e("noah","detachView");
+        Log.e("noah", "login detachView");
     }
 
     @Override
