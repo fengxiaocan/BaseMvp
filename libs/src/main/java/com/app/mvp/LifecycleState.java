@@ -5,7 +5,9 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 
-public class LifecycleState implements LifecycleEventObserver,LifecycleData {
+import com.app.lifedata.LifecycleData;
+
+public class LifecycleState implements LifecycleEventObserver, LifecycleData {
     private Lifecycle.Event state = null;
 
     @Override

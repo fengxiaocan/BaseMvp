@@ -1,26 +1,7 @@
 package com.app.mvp;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import com.app.lifedata.LifeDataFragment;
 
-public class BaseMvpFragment extends Fragment implements LifeDataProvider.BaseLifeDataOwner {
-    private LifeDataStore mvpStore;
-    private LifeDataProvider provider;
+public class BaseMvpFragment extends LifeDataFragment {
 
-    @Override
-    public LifeDataStore getLifeDataStore() {
-        return mvpStore == null ? mvpStore = new LifeDataStore() : mvpStore;
-    }
-
-    public LifeDataProvider provider() {
-        return provider == null ? provider = LifeDataProvider.of(this) : provider;
-    }
-
-    public <T extends LifecycleData> T getProvider(@NonNull Class<T> modelClass) {
-        return provider().get(modelClass);
-    }
-
-    public <T extends LifecycleData> T getProvider(@NonNull String key, @NonNull Class<T> modelClass) {
-        return provider().get(key, modelClass);
-    }
 }

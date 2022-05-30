@@ -1,5 +1,7 @@
 package com.app.mvp;
 
+import com.app.lifedata.LifecycleData;
+
 /**
  * Presenter 基类
  */
